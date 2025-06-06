@@ -1,0 +1,4 @@
+opensearch-py==2.8.0
+mcp==1.9.2
+langchain-text-splitters
+langchain
