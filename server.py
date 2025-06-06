@@ -132,9 +132,9 @@ def run_search_server(host: str, port: int, index: str, username: str = None, pa
 
 if __name__ == "__main__":
     # Default values
-    host = os.environ.get("OPENSEARCH_HOST", "search-demo-phujjhg6osxfiym6fmmddodscq.cn-north-1.es.amazonaws.com.cn")
+    host = os.environ.get("OPENSEARCH_HOST", "")
     port = int(os.environ.get("OPENSEARCH_PORT", "443"))
-    index = os.environ.get("OPENSEARCH_INDEX", "default-index")
+    index = os.environ.get("OPENSEARCH_INDEX", "")
     username = os.environ.get("OPENSEARCH_USERNAME", "")
     password = os.environ.get("OPENSEARCH_PASSWORD", "")
     debug = os.environ.get("DEBUG", "").lower() in ("true", "1", "yes")
