@@ -20,18 +20,7 @@ This project serves as a knowledge base backend for AI applications, supporting 
 - Document management (add, search, delete)
 - MCP protocol support for easy integration with AI applications
 
-## Installation Requirements
-
-### Dependencies
-
-```
-opensearch-py==2.8.0
-mcp==1.9.2
-langchain-text-splitters
-langchain
-```
-
-### Environment Variables
+## Environment Variables
 
 The server can be configured using the following environment variables:
 
@@ -65,13 +54,28 @@ pip install -r requirements.txt
 ### Starting the Server
 
 ```bash
-python server.py [host] [port] [index] [username] [password]
-```
-
-Or run directly after setting environment variables:
-
-```bash
-python server.py
+{
+  "mcpServers": {
+    "aosmcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "project_dir",
+        "run",
+        "server.py"
+      ],
+      "env": {
+        "OPENSEARCH_HOST": "xxxx",
+        "OPENSEARCH_PORT": "xxx",
+        "OPENSEARCH_INDEX": "xxx",
+        "OPENSEARCH_USERNAME": "xxx",
+        "OPENSEARCH_PASSWORD": "xxxx",
+        "EMBEDDING_API_TOKEN": "xxx"
+      },
+      "transportType": "stdio"
+    }
+  }
+}
 ```
 
 ### Available MCP Tools
@@ -118,18 +122,7 @@ aos_mcp/
 └── .env.example            # Example environment variables
 ```
 
-## Architecture
-
-### OpenSearch Client
-
-The `OpenSearchClient` class provides basic functionality for interacting with OpenSearch services:
-
-- Document search
-- Document writing
-- Document indexing
-- Document deletion
-
-### Embedding Tools
+## Embedding Tools
 
 The `EmbeddingTools` class provides text embedding and vector search functionality:
 
@@ -151,28 +144,10 @@ The `EmbeddingTools` class provides text embedding and vector search functionali
 - Ensure OpenSearch instances have appropriate access control and network security settings
 - Implement proper authentication for production deployments
 
-## Development
-
-### Setting Up Development Environment
-
-1. Clone the repository
-2. Create a virtual environment
-3. Install dependencies
-4. Copy `.env.example` to `.env` and configure your environment variables
-
-### Running Tests
-
-```bash
-python -m unittest discover
-```
-
 ## License
 
 [MIT License](LICENSE)
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Acknowledgements
 
